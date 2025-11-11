@@ -16,7 +16,7 @@ class CountryViewModel: ObservableObject {
             capital: "Buenos Aires",
             region: "Americas",
             subregion: "South America",
-            flagAssetName: "flag_argentin",
+            flagAssetName: "flag_argentina",
             lat: -34.6037,
             lng: -58.3816,
             population: 45195777,
