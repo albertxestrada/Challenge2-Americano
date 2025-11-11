@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RegionPicker: View {
     @Binding var selectedRegion: String
-    let regions: [String] = ["", "Africa", "Americas", "Asia", "Europe", "Oceania"]
+    let regions: [String]
     
     @ViewBuilder
     func roundedBackground(for region: String) -> some View {
@@ -17,20 +17,14 @@ struct RegionPicker: View {
             .fill(selectedRegion == region ? Color.blue : Color(.systemGray5))
     }
 
-    
     var body: some View {
-        
         ScrollView(.horizontal, showsIndicators: false) {
-            
-            
             HStack(spacing: 10) {
                 ForEach(regions, id: \.self) { r in
                     Text(r.isEmpty ? "All" : r)
                         .padding(.horizontal, 14)
                         .padding(.vertical, 8)
-                        .background(
-                            roundedBackground(for: r)
-                        )
+                        .background(roundedBackground(for: r))
                         .foregroundColor(selectedRegion == r ? .white : .blue)
                         .onTapGesture {
                             withAnimation(.easeInOut) {
@@ -41,12 +35,12 @@ struct RegionPicker: View {
             }
             .padding(.horizontal)
         }
-
     }
 }
 
 #Preview {
-    RegionPicker(selectedRegion: .constant("Americas"))
-        
+    RegionPicker(
+        selectedRegion: .constant("Americas"),
+        regions: ["", "Africa", "Americas", "Asia", "Europe", "Oceania", "Western Asia", "Southern Europe"]
+    )
 }
-

@@ -16,11 +16,11 @@ struct ContentView: View {
     var filtered: [CountryModel] {
         viewModel.countries.filter { c in
             (selectedRegion.isEmpty || c.region.lowercased() == selectedRegion.lowercased()) &&
-            (searchText.isEmpty || c.name.lowercased().contains(searchText.lowercased()))
+            (searchText.isEmpty || c.name.common.lowercased().contains(searchText.lowercased()))
         }
     }
-
     
+   
     var body: some View {
         NavigationView {
             VStack(spacing: 12) {
@@ -30,8 +30,13 @@ struct ContentView: View {
                     Spacer()
                 }
                 .padding(.horizontal)
+                
                 SearchBar(text: $searchText)
-                RegionPicker(selectedRegion: $selectedRegion)
+                
+                RegionPicker(
+                    selectedRegion: $selectedRegion,
+                    regions: viewModel.availableRegions
+                )
                 
                 List {
                     ForEach(filtered) { country in
@@ -46,6 +51,7 @@ struct ContentView: View {
         }
     }
 }
+
 
 #Preview {
     ContentView()
