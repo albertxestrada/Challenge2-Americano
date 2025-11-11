@@ -18,7 +18,7 @@ class CountryViewModel: ObservableObject {
     }
     
     func fetchCountries() {
-        guard let url = URL(string: "https://restcountries.com/v3.1/all?fields=name,cca3,capital,region,subregion,latlng,flags") else { return }
+        guard let url = URL(string: "https://restcountries.com/v3.1/all?fields=name,cca3,capital,region,latlng,flags,subregion,population,currencies,languages") else { return }
         isLoading = true
         
         URLSession.shared.dataTaskPublisher(for: url)

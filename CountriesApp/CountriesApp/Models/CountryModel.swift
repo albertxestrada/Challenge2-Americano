@@ -16,6 +16,10 @@ struct CountryModel: Identifiable, Codable {
     let region: String
     let latlng: [Double]
     let flags: Flags
+    let subregion: String?
+    let population: Int
+    let currencies: [String: Currency]?
+    let languages: [String: String]?
     
     struct Name: Codable {
         let common: String
@@ -31,6 +35,24 @@ struct CountryModel: Identifiable, Codable {
     var displayCapital: String {
         capital?.first ?? "N/A"
     }
+    
+    struct Currency: Codable {
+        let name: String
+        let symbol: String?
+        
+    }
+    
+    var displayLanguages: String {
+            languages?.values.joined(separator: ", ") ?? "N/A"
+        }
+    
+    var primaryCurrencySymbol: String {
+            currencies?.values.first?.symbol ?? ""
+        }
+
+        var primaryCurrencyName: String {
+            currencies?.values.first?.name ?? "N/A"
+        }
     
     var latitude: Double { latlng.first ?? 0 }
     var longitude: Double { latlng.last ?? 0 }

@@ -44,7 +44,11 @@ struct CountryRow: View {
             svg: "https://flagcdn.com/w320/mx.svg",
             png: "https://flagcdn.com/w320/mx.png",
             alt: "Flag of Mexico"
-        )
+        ),
+        subregion: "North America",
+        population: 139000000,
+        currencies: ["MXN": CountryModel.Currency(name: "Mexican Peso", symbol: "$")],
+        languages: ["spa": "Spanish"]
     ))
 
 }
