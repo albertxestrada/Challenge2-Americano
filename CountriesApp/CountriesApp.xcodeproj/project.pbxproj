@@ -16,11 +16,6 @@
 			path = CountriesApp;
 			sourceTree = "<group>";
 		};
-		F7AB93AF2EBBA7F7006B1779 /* Views */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Views;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,7 +33,6 @@
 			isa = PBXGroup;
 			children = (
 				F7AB93A12EBBA593006B1779 /* CountriesApp */,
-				F7AB93AF2EBBA7F7006B1779 /* Views */,
 				F7AB93A02EBBA593006B1779 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -68,7 +62,6 @@
 			);
 			fileSystemSynchronizedGroups = (
 				F7AB93A12EBBA593006B1779 /* CountriesApp */,
-				F7AB93AF2EBBA7F7006B1779 /* Views */,
 			);
 			name = CountriesApp;
 			packageProductDependencies = (
