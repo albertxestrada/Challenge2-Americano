@@ -23,14 +23,16 @@ struct ContentView: View {
    
     var body: some View {
         NavigationView {
-            VStack(spacing: 12) {
+            VStack {
+                
                 HStack {
                     Text("Countries")
                         .font(.largeTitle.bold())
                     Spacer()
-                }
-                .padding(.horizontal)
+                }.padding()
                 
+                Spacer()
+                            
                 SearchBar(text: $searchText)
                 
                 RegionPicker(
@@ -46,8 +48,9 @@ struct ContentView: View {
                     }
                 }
                 .scrollContentBackground(.hidden)
+                
             }
-            .padding()
+            
         }
     }
 }

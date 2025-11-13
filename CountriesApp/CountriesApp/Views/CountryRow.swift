@@ -16,6 +16,7 @@ struct CountryRow: View {
             if let flagURL = URL(string: country.flags.png) {
                 AsyncImage(url: flagURL) { image in
                     image.resizable()
+                        .aspectRatio(contentMode: .fit)
                 } placeholder: {
                     ProgressView()
                 }

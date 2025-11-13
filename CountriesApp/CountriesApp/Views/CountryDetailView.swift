@@ -41,7 +41,12 @@ struct CountryDetailView: View {
                             .aspectRatio(contentMode: .fit)
                             .frame(height: 180)
                             .cornerRadius(12)
-                            .shadow(radius: 3)
+                            .shadow(
+                                    color: .black.opacity(0.4), // Color y opacidad (40% de negro)
+                                    radius: 15,                  // Nivel de desenfoque (suave y difuso)
+                                    x: 0,                        // Sin desplazamiento horizontal
+                                    y: 8                         // Ligeramente desplazada hacia abajo
+                                )
                             .onTapGesture {
                                 showFlagInfo = true
                             }
@@ -49,6 +54,7 @@ struct CountryDetailView: View {
                         RoundedRectangle(cornerRadius: 12)
                             .fill(Color.gray.opacity(0.2))
                             .frame(height: 180)
+                        
                     }
                 } else {
                     RoundedRectangle(cornerRadius: 12)
@@ -76,8 +82,9 @@ struct CountryDetailView: View {
                     
                 }
                 
+                InfoCard(title: "Languages", value: country.displayLanguages)
+                
                 HStack(spacing: 16) {
-                    InfoCard(title: "Languages", value: country.displayLanguages)
                     InfoCard(title: "Currency", value: country.primaryCurrencyName+" "+country.primaryCurrencySymbol)
                     InfoCard(title: "Population", value: country.population.formatted(.number))
                 }
@@ -102,6 +109,7 @@ struct CountryDetailView: View {
             .padding()
         }
         .sheet(isPresented: $showFlagInfo) {
+            Image(systemName: "chevron.compact.down")
             VStack(spacing: 20) {
                 Text("Flag Description")
                     .font(.title2.bold())
@@ -111,13 +119,10 @@ struct CountryDetailView: View {
                     .multilineTextAlignment(.center)
                     .padding()
                 
-                Button("Close") {
-                    showFlagInfo = false
-                }
-                .padding(.top, 10)
             }
             .padding()
-            .presentationDetents([.medium])
+            .presentationDetents([.fraction(0.40)])
+            
         }
 
         .navigationTitle(country.name.common)
@@ -162,7 +167,7 @@ struct InfoCard: View {
         flags: CountryModel.Flags(
             svg: "https://flagcdn.com/w320/mx.svg",
             png: "https://flagcdn.com/w320/mx.png",
-            alt: "Flag of Mexico"
+            alt: "The flag of Mexico is composed of three equal vertical bands of green, white and red, with the national coat of arms centered in the white band."
         ),
         subregion: "North America",
         population: 139000000,
