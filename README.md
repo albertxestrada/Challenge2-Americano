@@ -1,98 +1,119 @@
-# Challenge2-Americano
+# 🌍 World Explorer
 
-🌍 CountriesApp
-A SwiftUI application inspired by Been, designed to explore countries around the world using live data from the REST Countries API.
-📌 Overview
-CountriesApp is an iOS application built with SwiftUI that allows users to explore detailed information about every country, including its flag, capital, region, population, languages, currency, and more — all retrieved dynamically from the REST Countries API v3.1.
-This project was developed as a learning exercise to practice:
-Consuming REST APIs in SwiftUI
-Modeling JSON data using Codable
-Designing clean UIs following Apple Human Interface Guidelines
-Managing state with MVVM
-Displaying maps using MapKit
-Inspired by the "Explore" section in the Been app, this project focuses on transforming static geographical data into a dynamic, interactive experience.
-✨ Features
-✔ Explore all countries
-Loads all countries from the REST Countries API
-Displays flags, names, capitals, and regions
-Sorts countries alphabetically
-✔ Country detail view
-High-resolution flag display
-Official name and basic info
-Region & subregion
-Population
-Languages
-Currencies (name + symbol)
-Interactive map pin (MapKit)
-✔ Clean UI & Apple-style interaction
-Minimalist design inspired by Apple’s Human Interface Guidelines
-Info cards that adapt text size automatically
-Smooth layout optimized for readability
-🏛 Architecture
-The app follows a MVVM (Model-View-ViewModel) structure:
-Model
-CountryModel
-Submodels: Name, Flags, Currency
-Mirrors only the fields requested from the API (required for /all endpoint)
-ViewModel
-CountryViewModel
-Handles API call
-Decodes JSON into Swift types
-Publishes list of countries to the UI
-Views
-CountryListView
-CountryRow
-CountryDetailView (with MapKit)
-RegionPicker
-🌐 API
-Data is fetched from:
-https://restcountries.com/v3.1/all?fields=name,capital,region,subregion,latlng,flags,population,currencies,languages
-The fields parameter is required for the /all endpoint.
-🛠 Technologies Used
-Swift
-SwiftUI
-Combine
-MapKit
-REST Countries API v3.1
-MVVM architecture
-🚀 Next Steps
-Planned improvements include:
-🟦 New Features
-Add “Visited Countries” functionality
-Add interactive world map view
-Implement flag-detail screen (meaning, symbolism)
-Add filters (region, population, language)
-Add "Compare Countries" feature
-🟦 UI/UX Enhancements
-More Apple-style animations
-Improved layout hierarchy
-Dark Mode refinements
-Better spacing & typography
-🟦 Technical Improvements
-Add caching or offline mode
-Add proper error states & loading indicators
-Expand accessibility support
-VoiceOver
-Dynamic Type
-Clearer alt text
-📁 Project Structure
-CountriesApp/
-├── Models/
-│   └── CountryModel.swift
-├── ViewModels/
-│   └── CountryViewModel.swift
-├── Views/
-│   ├── CountryListView.swift
-│   ├── CountryRow.swift
-│   ├── CountryDetailView.swift
-│   └── RegionPicker.swift
-└── CountriesAppApp.swift
-📸 Screenshots
-(Add screenshots once you have them)
-💡 Inspiration
-This project was heavily inspired by the Been app, specifically the “Explore” feature. The goal was to bring a similar global-overview experience but powered with live data instead of static content — giving users access to real-time information for every country.
-🔗 Repository
-(Add your repo link here)
-📬 Contact
-Created by Alberto Estrada
-Feel free to reach out or open an issue for improvements!
+A SwiftUI App Powered by the REST Countries API
+
+World Explorer is an iOS app built in SwiftUI that lets users explore
+every country in the world through a clean, modern, Apple-style
+interface.\
+The app fetches live data from the **REST Countries API**, allowing
+users to see updated information such as population, region, languages,
+currencies, maps, and flags.
+
+Inspired by the **"Been" app**, World Explorer focuses on providing a
+similar exploration experience --- but enriched with real-time country
+data instead of static content.
+
+## 📸 Features
+
+### ✔ Explore All Countries
+
+-   Scroll through a full list of countries.
+-   Beautiful card layout with flags and key info.
+
+### ✔ Search Bar
+
+-   Filter countries instantly by name.
+
+### ✔ Region Picker
+
+-   Browse countries by continent/region.
+
+### ✔ Country Detail View
+
+-   Flag with alt-text description
+-   Population, capital, subregion
+-   Currencies and languages
+-   High-resolution SVG images
+-   Interactive map coordinates
+
+### ✔ Modern Apple-Style UI
+
+-   Inspired by Apple Human Interface Guidelines
+-   Clean typography, spacing, and minimalism
+
+## 🏗 Tech Stack
+
+-   **SwiftUI** -- Declarative UI framework
+-   **REST Countries API v3.1** -- Live world data
+-   **MVVM Architecture** -- Clean data flow
+-   **Async/await Networking** -- Modern, efficient API calls
+-   **Codable Models** -- Decoding structured JSON safely
+
+## 🎯 Learning Goals
+
+This project was created to practice:
+
+-   Using **API calls** in SwiftUI
+-   Working with async/await
+-   Parsing complex JSON (nested objects, dictionaries, arrays)
+-   Structuring an app using **MVVM**
+-   Designing clean views following Apple's guidelines
+-   Handling errors and loading states
+-   Passing data between views
+
+## 📁 Project Structure
+
+    CountriesApp
+    │
+    ├── CountriesAppApp.swift
+    │
+    ├── Models
+    │   ├── CountryModel.swift
+    │   └── CountryViewModel.swift
+    │
+    ├── Components
+    │   ├── SearchBar.swift
+    │   ├── RegionPicker.swift│   
+    │
+    ├── Views
+    │   ├── ContentView.swift
+    │   ├── CountryRow.swift
+    │   └── CountryDetailView.swift
+    │
+    └── Resources
+        └── Assets.xcassets
+
+
+## 🚀 Next Steps
+
+Future improvements include:
+
+### ✨ UI Enhancements
+
+-   More polished animations
+-   A new interactive map view
+-   Better flag modal with zoom and transitions
+
+### ✨ New Features
+
+-   Track visited countries (inspired by Been)
+-   User profile & preferences
+-   Offline caching
+-   Save favorite countries
+-   Statistics dashboard (continents visited, languages spoken)
+
+### ✨ Technical Additions
+
+-   Implement error-specific UI states
+-   Improve JSON handling for large datasets
+-   Add unit tests (ViewModel + API layer)
+
+## 🔗 GitHub Repository
+
+Paste this README inside your repo.
+
+## 🙌 Credits
+
+-   Built by **Alberto Estrada**
+-   Inspired by the "Been" exploration interface
+-   Data provided by **REST Countries API**
