@@ -110,7 +110,7 @@ Future improvements include:
 
 ## 🔗 GitHub Repository
 
-Paste this README inside your repo.
+https://github.com/albertxestrada/Challenge2-Americano
 
 ## 🙌 Credits
 
