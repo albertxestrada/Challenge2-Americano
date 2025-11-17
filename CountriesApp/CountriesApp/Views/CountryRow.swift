@@ -12,54 +12,44 @@ struct CountryRow: View {
     let country: CountryModel
     
     var body: some View {
-        HStack(spacing: 16) {
-            if let flag = country.flagAssetName, UIImage(named: flag) != nil {
-                Image(flag)
-                    .resizable()
-                    .aspectRatio(4/3, contentMode: .fit)
-                    .frame(width: 70, height: 50)
-                    .cornerRadius(6)
-                    .shadow(radius: 1)
+        HStack {
+            if let flagURL = URL(string: country.flags.png) {
+                AsyncImage(url: flagURL) { image in
+                    image.resizable()
+                        .aspectRatio(contentMode: .fit)
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 50, height: 30)
+                .clipShape(RoundedRectangle(cornerRadius: 4))
                 
-            } else {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 6)
-                        .fill(Color(.systemGray5))
-                        .frame(width: 70, height: 50)
-                    Text(country.name.split(separator: " ").first.map { String($0.prefix(2)).uppercased() } ?? "")
-                                .font(.headline)
+                VStack(alignment: .leading) {
+                    Text(country.name.common)
+                        .font(.headline)
+                    Text(country.displayCapital)
+                        .font(.subheadline)
                 }
             }
-            
-            VStack(alignment: .leading, spacing: 6) {
-                Text(country.name)
-                    .font(.system(size: 18, weight: .semibold))
-                Text(country.capital ?? "--")
-                    .font(.system(size: 14, weight: .regular))
-                    .foregroundStyle(Color(.secondaryLabel))
-            }
-            Spacer()
-            
         }
-        .padding(.vertical, 8)
     }
 }
 
 #Preview {
     CountryRow(country: CountryModel(
-        id: "MEX",
-        name: "Mexico",
-        capital: "Mexico City",
+        cca3: "MEX",
+        name: CountryModel.Name(common: "Mexico", official: "United Mexican States"),
+        capital: ["Mexico City"],
         region: "Americas",
+        latlng: [19.4326, -99.1332],
+        flags: CountryModel.Flags(
+            svg: "https://flagcdn.com/w320/mx.svg",
+            png: "https://flagcdn.com/w320/mx.png",
+            alt: "Flag of Mexico"
+        ),
         subregion: "North America",
-        flagAssetName: "flag_mexico",
-        lat: 19.4326,
-        lng: -99.1332,
-        population: 126_014_024,
-        area: 1_964_375,
-        currency: "MXN",
-        language: "Spanish",
-        timezone: "UTC-6",
-        website: "https://www.gob.mx/"
+        population: 139000000,
+        currencies: ["MXN": CountryModel.Currency(name: "Mexican Peso", symbol: "$")],
+        languages: ["spa": "Spanish"]
     ))
+
 }
